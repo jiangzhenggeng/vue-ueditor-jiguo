@@ -63,26 +63,31 @@ UE.plugins['my_style'] = function () {
   me.commands['remote_catch'] = {
     execCommand: function () {
       var me = this
-
       if (me.queryCommandState('remote_catch') == 1) {
-
+        me.fireEvent('catchRemoteImage')
       }
     },
     queryCommandState: function () {
-
+      return 1
     }
   }
-  me.commands['insert_card'] = {
-    execCommand: function () {
-      var me = this
 
-      if (me.queryCommandState('insert_card') == 1) {
-
+  var commandsDialog = ['insert_card', 'insert_video', 'insert_image']
+  for (var i = 0; i < commandsDialog.length; i++) {
+    (function (command) {
+      me.commands[command] = {
+        execCommand: function () {
+          var me = this, flage = 'flage-' + command
+          me[flage] = !me[flage]
+          if (me.queryCommandState(command) == 1) {
+            me.$emitEvent(command, me[flage])
+          }
+        },
+        queryCommandState: function () {
+          return 1
+        }
       }
-    },
-    queryCommandState: function () {
-
-    }
+    })(commandsDialog[i])
   }
 
 }

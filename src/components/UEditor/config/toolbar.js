@@ -30,9 +30,11 @@ const tooBar = [
     'justifycenter',
     'justifyright',
     '|',
+    'insert_video',
     'simpleupload',
-    'insertimage',
+    'insert_image',
     'insert_card',
+    '|',
     'remote_catch',
     'drafts'
   ]

@@ -38,8 +38,11 @@
       })
       window.__ueditorNumber__ = (window.__ueditorNumber__ || 0) + 1
       vm.editor.key = this.number
+      vm.editor.$emitEvent = (eventType, params) => {
+        this.$emit('trigger:click:event', eventType, params)
+      }
     },
-    methds: {
+    methods: {
       setContent (content) {
         vm.editor.setContent(content || '')
       }
