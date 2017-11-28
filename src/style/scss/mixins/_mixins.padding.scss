@@ -1,0 +1,26 @@
+@mixin pd($num,$max:30,$step:2) {
+  @if $num <= $max {
+    .pd#{$num} {
+      padding: px2rem($num * 2);
+    }
+    .pdtb#{$num} {
+      padding: px2rem($num * 2) 0;
+    }
+    .pdlr#{$num} {
+      padding: 0 px2rem($num * 2);
+    }
+    .pdl#{$num} {
+      padding-left: px2rem($num * 2);
+    }
+    .pdt#{$num} {
+      padding-top: px2rem($num * 2);
+    }
+    .pdr#{$num} {
+      padding-right: px2rem($num * 2);
+    }
+    .pdb#{$num} {
+      padding-bottom: px2rem($num * 2);
+    }
+    @include pd($num + $step, $max, $step);
+  }
+}

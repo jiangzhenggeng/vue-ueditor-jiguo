@@ -1,0 +1,76 @@
+//首发&tiyanshi 标签
+@mixin tag() {
+  .event-tag {
+    position: absolute;
+    left: px2rem(20);
+    top: px2rem(20);
+    border-radius: px2rem(30);
+    color: #fff;
+    line-height: px2rem(36);
+    padding: px2rem(2) px2rem(16);
+    background-color: #fe584d;
+    z-index: 3;
+    //首发
+    &.shoufa {
+      background-color: #fe584d;
+    }
+    //体验师专享
+    &.tiyanshi {
+      background-color: #f5a821;
+    }
+    //
+    &.ev-zhekou {
+      background-color: #55468c;
+    }
+    //清单
+    &.qingdan {
+      background-color: #fe584d;
+    }
+    //新品
+    &.xinping {
+      background-color: #ffc107;
+    }
+    //体验
+    &.tiyan {
+      background-color: #147dff;
+    }
+    &.huati {
+      background-color: #FF7A2B;
+    }
+  }
+}
+
+//用户 玩家,体验师标签
+@mixin designation() {
+  .designation {
+    background-color: #ff9991;
+    color: #d42f3f;
+    border-radius: px2rem(6);
+    font-size: px2rem(24);
+    //padding: 3px 8px 2px 8px;
+    vertical-align: baseline;
+    line-height: normal;
+    padding: px2rem(2) px2rem(10);
+    font-weight: 400;
+    &.tys {
+      background-color: #FFEF83;
+      color: #AF701B;
+    }
+    &.player {
+      background-color: #92e2ff;
+      color: #1672AD;
+    }
+    &.sxtys {
+      background-color: #ff9991;
+      color: #d42f3f;
+    }
+    &.sptys {
+      background-color: #D1B3FF;
+      color: #784F9C;
+    }
+    &.jxtys {
+      background-color: #50E3C2;
+      color: #015643;
+    }
+  }
+}

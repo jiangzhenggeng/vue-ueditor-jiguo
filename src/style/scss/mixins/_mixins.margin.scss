@@ -1,0 +1,26 @@
+@mixin mg($num,$max:30,$step:2) {
+  @if $num <= $max {
+    .mg#{$num} {
+      margin: px2rem($num * 2);
+    }
+    .mgtb#{$num} {
+      margin: px2rem($num * 2) 0;
+    }
+    .mglr#{$num} {
+      margin: 0 px2rem($num * 2);
+    }
+    .mgl#{$num} {
+      margin-left: px2rem($num * 2);
+    }
+    .mgt#{$num} {
+      margin-top: px2rem($num * 2);
+    }
+    .mgr#{$num} {
+      margin-right: px2rem($num * 2);
+    }
+    .mgb#{$num} {
+      margin-bottom: px2rem($num * 2);
+    }
+    @include mg($num + $step, $max, $step);
+  }
+}

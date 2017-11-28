@@ -1,0 +1,6 @@
+//将px单位转换为rem单位
+@function px2rem($number) {
+  @return $number / ($number * 0 + 1) / 2 * 1px;
+}
+
+

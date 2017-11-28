@@ -1,0 +1,44 @@
+@mixin layout-init() {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html {
+    color: #000;
+    background: #f2f2f2;
+    overflow-y: scroll;
+    text-size-adjust: 100%;
+    tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  body {
+    font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+    font-size: px2rem(28);
+    color: #595959;
+    margin: auto;
+  }
+  iframe {
+    border: none;
+  }
+  em,i{
+    font-style: normal;
+  }
+  li {
+    list-style: none;
+  }
+  img {
+    border: none;
+    vertical-align: middle;
+    display: inline-block;
+  }
+  a {
+    text-decoration: none;
+    color: #595959;
+  }
+}
+
+
+
+
+
+

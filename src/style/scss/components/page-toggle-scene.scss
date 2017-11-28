@@ -1,0 +1,43 @@
+.page-toggle-scene-out-enter-active,
+.page-toggle-scene-out-leave-active,
+.page-toggle-scene-in-enter-active,
+.page-toggle-scene-in-leave-active {
+  will-change: transform;
+  transition-property: all;
+  transition-duration: 300ms;
+  transition-timing-function: ease-out;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+$scale : 1;
+.page-toggle-scene-out-enter {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0) scale($scale);
+}
+.page-toggle-scene-out-leave-active {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0) scale($scale);
+}
+.page-toggle-scene-in-enter {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0) scale($scale);
+}
+.page-toggle-scene-in-leave-active {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0) scale($scale);
+}
+
+
+body,.page,.page__animate-root,.page__body{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.page__body{
+  box-sizing: border-box;
+  overflow-y: scroll;
+}

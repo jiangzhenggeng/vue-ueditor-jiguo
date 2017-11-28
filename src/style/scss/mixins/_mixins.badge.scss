@@ -1,0 +1,27 @@
+
+//消息
+@mixin badge() {
+  .badge {
+    color: #ffffff;
+    display: inline-block;
+    padding: px2rem(12);
+    line-height: 1;
+    background-color: #fe5341;
+    border-radius: px2rem(200);
+    position: absolute;
+    right: -0px;
+    top: px2rem(-5);
+    z-index: 1;
+    font-size: px2rem(24);
+    &.number {
+      padding: px2rem(6) px2rem(12);
+      right: px2rem(-15);
+      top: px2rem(-5);
+    }
+  }
+}
+
+
+
+
+

@@ -1,0 +1,218 @@
+//流卡片
+@mixin stream-card() {
+
+  .mian-stream {
+
+    li {
+      background-color: #fff;
+      position: relative;
+      .global-padding {
+        position: relative;
+        padding: px2rem(24) px2rem(24);
+      }
+      &:after {
+        content: '';
+        display: block;
+        height: px2rem(1);
+        left: 0;
+        width: 100%;
+        position: absolute;
+        background-color: #ebebeb;
+        bottom: 0;
+      }
+    }
+
+    li.small {
+      .stream-box {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+      }
+
+      .stream-img {
+        width: px2rem(180);
+        height: px2rem(180);
+        &, .progressive-image {
+          overflow: hidden;
+          border-radius: px2rem(10);
+        }
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .stream-right {
+        margin-left: px2rem(20);
+        overflow: hidden;
+        position: relative;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: stretch;
+      }
+      .stream-title {
+        line-height: px2rem(40);
+        height: px2rem(80);
+        overflow: hidden;
+      }
+
+      .video,
+      .icon-video:before {
+        width: px2rem(34);
+        height: px2rem(34);
+        background-position: px2rem(-60) px2rem(-476);
+      }
+      .video {
+        position: absolute;
+        left: px2rem(15px);
+        bottom: px2rem(15px);
+        z-index: 3;
+      }
+
+    }
+
+    li.large {
+
+      .stream-title {
+        height: px2rem(40px);
+        overflow: hidden;
+        line-height: px2rem(40px);
+      }
+      .stream-box {
+        position: relative;
+        overflow: hidden;
+        border-radius: px2rem(10px);
+      }
+
+      .stream-img {
+        width: 100%;
+        height: px2rem(350px);
+        &, .progressive-image {
+          overflow: hidden;
+          border-radius: px2rem(10px);
+        }
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .mask-cover {
+        position: absolute;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+      }
+
+      .stream-bottom {
+        color: #ccc;
+        position: absolute;
+        bottom: 0;
+        padding: px2rem(20px);
+        padding-bottom: px2rem(26px);
+        width: 100%;
+        z-index: 3;
+      }
+      .stream-bottom-inner {
+        box-sizing: content-box;
+        height: px2rem(30px);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+      .stream-text {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .praise-replay {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        > span {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+    }
+
+    //话题
+    li.topic {
+      .stream-topic {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+      }
+      .stream-topic-title {
+        font-size: px2rem(44px);
+        margin-bottom: px2rem(8px);
+        font-weight: 800;
+        text-shadow: 0px px2rem(24px) px2rem(48px) rgba(0, 0, 0, .3);
+      }
+      .stream-topic-info {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        height: px2rem(44px);
+        line-height: px2rem(44px);
+        padding: 0 px2rem(30px);
+        font-size: px2rem(30px);
+        border-radius: px2rem(50px);
+        background-color: rgba(255, 255, 255, 0.4);
+        > span {
+          width: px2rem(100px);
+          display: flex;
+          margin: 0 px2rem(10px);
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+        }
+        .line {
+          width: px2rem(2px);
+          height: px2rem(20px);
+          margin: 0;
+          background-color: rgba(255, 255, 255, 0.5);
+        }
+        .icon {
+          margin-right: px2rem(10px);
+        }
+      }
+      .stream-status {
+        margin-top: px2rem(6px);
+      }
+    }
+
+    .article-show-all-header {
+      margin-top: px2rem(24px);
+      height: px2rem(40px);
+      line-height: px2rem(40px);
+      overflow: hidden;
+      .article-show-all-header-href {
+        position: relative;
+        text-align: left;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+  }
+
+}
