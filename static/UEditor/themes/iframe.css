@@ -4,6 +4,10 @@
     color: #666666;
     line-height: 28px;
 }
+.__editor__container__ p{
+    display: block;
+    min-height: 28px;
+}
 .__editor__container__ img{
     display: block;
     margin: 5px auto;

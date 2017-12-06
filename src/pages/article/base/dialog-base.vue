@@ -1,27 +1,13 @@
 <style lang="less" scoped>
   @model__header-height: 40px;
   .model__wrap {
-    & {
-      z-index: 12;
-    }
-    &,
-    .model__mask,
-    .model__table {
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .model__mask {
-      position: absolute;
-      background: rgba(0, 0, 0, 0.3);
-      height: 200%;
-    }
+    z-index: 12;
+    position: fixed;
+    left: 50%;
+    top: 60px;
 
     .model__table {
-      position: absolute;
+      position: relative;
       display: table;
       color: #fff;
     }
@@ -54,6 +40,9 @@
       font-size: 16px;
       box-sizing: border-box;
       padding: 0 15px;
+      cursor: move;
+      user-select: none;
+
       &:after {
         position: absolute;
         width: 100%;
@@ -174,12 +163,12 @@
 </style>
 
 <template>
-  <div class="model__wrap">
+  <div class="model__wrap" ref="model__wrap">
     <div class="model__table">
       <div class="model__td">
         <div class="model__inner">
           <div class="model__content">
-            <div class="model__header">
+            <div class="model__header" @mousedown="mousedown">
               <div class="model__title">{{ title }}</div>
               <div class="model__close" @click="close">×</div>
             </div>
@@ -197,6 +186,7 @@
   </div>
 </template>
 <script>
+  import $ from 'jquery'
 
   export default {
     props: {
@@ -205,9 +195,50 @@
         default: '我是标题'
       }
     },
+    mounted() {
+      var _this = this
+      _this.windowW = $(window).width()
+      _this.windowH = $(window).height()
+      $(document).on('mouseup.dialogbase', function (e) {
+        _this.mouseup(e)
+      }).on('mousemove.dialogbase', function (e) {
+        _this.mousemove(e)
+      })
+
+      $(this.$refs['model__wrap']).css({
+        left: _this.windowW / 2 - $(this.$refs['model__wrap']).width() / 2
+      })
+
+    },
+    beforeDestroy() {
+      $(document).off('mouseup.dialogbase').off('mousemove.dialogbase')
+    },
     methods: {
-      close () {
+      close() {
         this.$emit('close')
+      },
+      mousedown(e) {
+        this.$emit('mousedown')
+        this.MousedownFlage = true
+        var offset = $(this.$refs['model__wrap']).offset()
+        this.posX = e.clientX - parseInt(offset.left)
+        this.posY = e.clientY - parseInt(offset.top)
+      },
+      mousemove(e) {
+        if (this.MousedownFlage) {
+          this.$emit('mousemove')
+          var left = e.clientX - this.posX
+          var top = e.clientY - this.posY
+          $(this.$refs['model__wrap']).css({
+            left: left <= 0 ? 0 : (left >= this.windowW - 100 ? this.windowW - 100 : left),
+            top: top <= 0 ? 0 : (top >= this.windowH - 100 ? this.windowH - 100 : top)
+          })
+        }
+      },
+      mouseup(e) {
+        this.mousemove(e)
+        this.MousedownFlage = false
+        this.$emit('mouseup')
       }
     }
   }

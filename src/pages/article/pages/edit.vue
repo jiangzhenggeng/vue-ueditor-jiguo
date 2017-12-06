@@ -21,7 +21,7 @@
 
 <script>
 
-  import { mapState, mapActions } from 'vuex'
+  import {mapState, mapActions} from 'vuex'
   import InertVideo from '../components/insert-video.vue'
   import InertImage from '../components/insert-image.vue'
   import InertCard from '../components/insert-card.vue'
@@ -50,13 +50,13 @@
       InertCard
     },
     methods: {
-      editorReady (editor) {
+      editorReady(editor) {
         this.$nextTick(() => {
           this.hidePageLoading()
         })
         this.editor = editor
       },
-      TriggerClickEvent (eventType) {
+      TriggerClickEvent(eventType) {
         switch (eventType) {
           case 'insert_video': {
             this.InsertVideoVisibile = true
@@ -72,7 +72,7 @@
           }
         }
       },
-      InsertHtml (html) {
+      InsertHtml(html) {
         this.editor.execCommand('inserthtml', html)
         console.log(this.editor.getContent())
       },

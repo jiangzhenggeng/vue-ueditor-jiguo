@@ -1,4 +1,4 @@
-export function unhtmlForUrl (str, reg) {
+export function unhtmlForUrl(str, reg) {
   return str ? str.replace(reg || /[<">']/g, function (a) {
     return {
       '<': '&lt;',
@@ -11,7 +11,7 @@ export function unhtmlForUrl (str, reg) {
   }) : ''
 }
 
-export function convertUrlToFlash (url) {
+export function convertUrlToFlash(url) {
   url = String(url).replace(/^\s+|\s+$/g, '')
   if (!/^https?:\/\//i.test(url)) {
     return false
@@ -37,7 +37,7 @@ export function convertUrlToFlash (url) {
   return url
 }
 
-export function convertUrlToIframe (url) {
+export function convertUrlToIframe(url) {
   url = convertUrlToFlash(url)
   if (!url) return false
 
@@ -50,7 +50,7 @@ export function convertUrlToIframe (url) {
   return url
 }
 
-export function getKeyVal (src, key) {
+export function getKeyVal(src, key) {
   var matchVidArray = src.toString().split('?')[1].toString().split('&'), vid = null
   for (var i2 = 0; i2 < matchVidArray.length; i2++) {
     if (matchVidArray[i2].split('=')[0].toLowerCase() == key) {

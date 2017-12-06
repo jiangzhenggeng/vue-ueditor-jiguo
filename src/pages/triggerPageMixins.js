@@ -1,4 +1,4 @@
-import { mapState } from 'vuex'
+import {mapState} from 'vuex'
 
 export default {
   computed: {
@@ -7,7 +7,7 @@ export default {
     })
   },
   watch: {
-    pageRouterLoading (newVal) {
+    pageRouterLoading(newVal) {
       if (newVal) {
         this.Loading().show()
       } else {

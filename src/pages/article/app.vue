@@ -1,5 +1,5 @@
 <style lang="scss">
-  $IMAGES_PATH : '../../style/images/';
+  $IMAGES_PATH: '../../style/images/';
   @import '../../style/scss/app.scss';
 </style>
 
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-  import { mapState } from 'vuex'
+  import {mapState} from 'vuex'
   import mainMixins from '../mainMixins'
 
   export default {

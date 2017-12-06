@@ -1,16 +1,14 @@
 <style lang="less" scoped>
-  @import "./animate";
+
 </style>
 <template>
-  <transition name="window__modal">
-    <dialog-base
-      v-if="inner_visibile"
-      @close="close"
-      title="插入卡片"
-    >
-      插入卡片
-    </dialog-base>
-  </transition>
+  <dialog-base
+    v-if="inner_visibile"
+    @close="close"
+    title="插入卡片"
+  >
+    插入卡片
+  </dialog-base>
 </template>
 <script>
   import mixins from './mixins'

@@ -7,13 +7,13 @@ export default {
       default: false
     }
   },
-  data () {
+  data() {
     return {
       inner_visibile: this.visibile
     }
   },
   watch: {
-    visibile (newVal) {
+    visibile(newVal) {
       this.inner_visibile = !!newVal
     }
   },
@@ -21,7 +21,7 @@ export default {
     DialogBase
   },
   methods: {
-    close () {
+    close() {
       this.$emit('update:visibile', false)
       this.inner_visibile = false
     }

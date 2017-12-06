@@ -58,7 +58,7 @@
   }
   //为工具栏添加按钮，以下都是统一的按钮触发命令，所以写在一起
   var btnCmds = [
-    'title_h3', 'remote_catch', 'insert_card', 'insert_video', 'insert_image', 'insertorderedlist2', 'insertunorderedlist2',
+    'title_h3', 'remote_catch', 'insert_card', 'insert_video', 'insert_image','full_screen', 'insertorderedlist2', 'insertunorderedlist2',
     'undo', 'redo', 'formatmatch',
     'bold', 'italic', 'underline', 'fontborder', 'touppercase', 'tolowercase',
     'strikethrough', 'subscript', 'superscript', 'source', 'indent', 'outdent',

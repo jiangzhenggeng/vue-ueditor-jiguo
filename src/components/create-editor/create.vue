@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import { createId } from './create-id'
+  import {createId} from './create-id'
 
   export default {
     name: 'create-editor',
@@ -17,17 +17,17 @@
         default: ''
       }
     },
-    data () {
+    data() {
       return {
         editorId: createId()
       }
     },
     computed: {
-      number () {
+      number() {
         return 'editor-index-' + window.__ueditorNumber__ || 1
       }
     },
-    created () {
+    created() {
       var vm = this
       vm.editor = UE.getEditor(this.editorId, {
         onready: function () {
@@ -43,7 +43,7 @@
       }
     },
     methods: {
-      setContent (content) {
+      setContent(content) {
         vm.editor.setContent(content || '')
       }
     }

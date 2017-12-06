@@ -36,7 +36,7 @@ const tooBar = [
     'insert_card',
     '|',
     'remote_catch',
-    'drafts'
+    'drafts','full_screen'
   ]
 ]
 

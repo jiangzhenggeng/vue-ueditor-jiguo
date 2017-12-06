@@ -72,7 +72,7 @@ UE.plugins['my_style'] = function () {
     }
   }
 
-  var commandsDialog = ['insert_card', 'insert_video', 'insert_image']
+  var commandsDialog = ['insert_card', 'insert_video', 'insert_image', 'full_screen']
   for (var i = 0; i < commandsDialog.length; i++) {
     (function (command) {
       me.commands[command] = {

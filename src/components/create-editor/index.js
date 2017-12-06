@@ -1,7 +1,7 @@
 import Create from './create.vue'
 
 const _Create = {
-  install (Vue, options) {
+  install(Vue, options) {
     Vue.component(Create.name, Create)
   }
 }

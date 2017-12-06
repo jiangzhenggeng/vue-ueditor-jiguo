@@ -1,3 +1,3 @@
-export function createId () {
-  return 'id-' + ( new Date().getTime() ) + '' + (Math.random() + '').replace('.', '')
+export function createId() {
+  return 'id-' + (new Date().getTime()) + '' + (Math.random() + '').replace('.', '')
 }

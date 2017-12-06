@@ -23,26 +23,25 @@ const whitList = require('./config/whitlist');
  * 因此，UEditor提供了针对不同页面的编辑器可单独配置的根路径，具体来说，在需要实例化编辑器的页面最顶部写上如下代码即可。当然，需要令此处的URL等于对应的配置。
  * window.UEDITOR_HOME_URL = "/xxxx/xxxx/";
  */
-var URL,UPLOAD_URL;
-if( process.env.NODE_ENV=='production' ){
+var URL, UPLOAD_URL;
+if (process.env.NODE_ENV == 'production') {
   URL = 'http://cdn.jiguo.com/static@2.0/pc/UEditor/';
   UPLOAD_URL = '/protected/extensions/ueditor/';
-}else{
+} else {
   URL = 'http://localhost:8080/UEditor/';
   UPLOAD_URL = URL;
 }
 
 
-
 window.SYATEM = {
-  isMac:function() {
-	return /macintosh|mac os x/i.test(navigator.userAgent);
+  isMac: function () {
+    return /macintosh|mac os x/i.test(navigator.userAgent);
   }(),
-  isWindows : function() {
-	return /windows|win32/i.test(navigator.userAgent);
+  isWindows: function () {
+    return /windows|win32/i.test(navigator.userAgent);
   }(),
-  isLinux : function() {
-	return /linux/i.test(navigator.userAgent);
+  isLinux: function () {
+    return /linux/i.test(navigator.userAgent);
   }()
 };
 
@@ -58,37 +57,38 @@ window.UEDITOR_CONFIG = {
   , serverUrl: UPLOAD_URL + "php/controller.php?uid=1350026&code=fc9c77d63f68f7b51a8218447fe2f9fc"
   , toolbars: toolbars
   //当鼠标放在工具栏上时显示的tooltip提示,留空支持自动多语言配置，否则以配置值为准
-  ,labelMap:(function () {
+  , labelMap: (function () {
     var command = '⌘';
-	var shift = '⇧';
-	if( window.SYATEM.isMac ){
-	  command = '⌘';
-	}else {
-	  command = 'Ctrl';
-	}
+    var shift = '⇧';
+    if (window.SYATEM.isMac) {
+      command = '⌘';
+    } else {
+      command = 'Ctrl';
+    }
 
-	var toolsTips = {
-	  'undo':'撤销 （'+command+' Z）',
-	  'redo':'重做 （'+command+' '+shift+' Z）',
-	  'title_h3':'小标题',
-    'remote_catch':'抓取图片',
-    'insert_card':'插入卡片',
-    'simpleupload':'插入单图',
-    'insert_image':'插入多图',
-    'insert_video':'插入视频',
-	  'bold':'粗体 （'+command+' B）',
-	  'horizontal':'分隔线 （'+command+' '+shift+' S）',
-	  'insertorderedlist2':'有序列表 （'+command+' '+shift+' 7）',
-	  'insertunorderedlist2':'无序列表 （'+command+' '+shift+' 8）',
-	  'justifyleft':'左对齐',
-	  'justifycenter':'居中',
-	  'justifyright':'右对齐',
-	};
-	if( window.SYATEM.isWindows ){
-	  toolsTips['redo'] = '重做（'+command+' Y）';
-	  toolsTips['horizontal'] = '分隔线';
-	}
-	return toolsTips;
+    var toolsTips = {
+      'undo': '撤销 （' + command + ' Z）',
+      'redo': '重做 （' + command + ' ' + shift + ' Z）',
+      'title_h3': '小标题',
+      'remote_catch': '抓取图片',
+      'insert_card': '插入卡片',
+      'simpleupload': '插入单图',
+      'insert_image': '插入多图',
+      'full_screen': '全屏',
+      'insert_video': '插入视频',
+      'bold': '粗体 （' + command + ' B）',
+      'horizontal': '分隔线 （' + command + ' ' + shift + ' S）',
+      'insertorderedlist2': '有序列表 （' + command + ' ' + shift + ' 7）',
+      'insertunorderedlist2': '无序列表 （' + command + ' ' + shift + ' 8）',
+      'justifyleft': '左对齐',
+      'justifycenter': '居中',
+      'justifyright': '右对齐',
+    };
+    if (window.SYATEM.isWindows) {
+      toolsTips['redo'] = '重做（' + command + ' Y）';
+      toolsTips['horizontal'] = '分隔线';
+    }
+    return toolsTips;
 
   })()
 
@@ -102,10 +102,10 @@ window.UEDITOR_CONFIG = {
   //,theme:'default'
   //,themePath:URL +"themes/"
 
-  ,zIndex : 9     //编辑器层级的基数,默认是900
+  , zIndex: 9     //编辑器层级的基数,默认是900
 
   //针对getAllHtml方法，会在对应的head标签中增加该编码设置。
-  ,charset:"utf-8"
+  , charset: "utf-8"
 
   //若实例化编辑器的页面手动修改的domain，此处需要设置为true
   //,customDomain:false
@@ -115,9 +115,9 @@ window.UEDITOR_CONFIG = {
 
   //,textarea:'editorValue' // 提交表单时，服务器获取编辑器提交内容的所用的参数，多实例时可以给容器name属性，会将name给定的值最为每个实例的键值，不用每次实例化的时候都设置这个值
 
-  ,initialContent:'文章正文...'    //初始化编辑器的内容,也可以通过textarea/script给值，看官网例子
+  , initialContent: '文章正文...'    //初始化编辑器的内容,也可以通过textarea/script给值，看官网例子
 
-  ,autoClearinitialContent:true //是否自动清除编辑器初始内容，注意：如果focus属性设置为true,这个也为真，那么编辑器一上来就会触发导致初始化的内容看不到了
+  , autoClearinitialContent: true //是否自动清除编辑器初始内容，注意：如果focus属性设置为true,这个也为真，那么编辑器一上来就会触发导致初始化的内容看不到了
 
   // ,focus:false //初始化时，是否让编辑器获得焦点true或false
 
@@ -153,9 +153,9 @@ window.UEDITOR_CONFIG = {
   //,retainOnlyLabelPasted: false
 
   //是否默认为纯文本粘贴。false为不使用纯文本粘贴，true为使用纯文本粘贴
-  ,pasteplain:true
+  , pasteplain: true
   //纯文本粘贴模式下的过滤规则
-  ,filterTxtRules : filterTxtRules
+  , filterTxtRules: filterTxtRules
 
   //,allHtmlEnabled:false //提交到后台的数据是否包含整个html字符串
 
@@ -190,7 +190,7 @@ window.UEDITOR_CONFIG = {
   //,listiconpath : 'http://bs.baidu.com/listicon/'//自定义标号的路径
   //,maxListLevel : 3 //限制可以tab的级数, 设置-1为不限制
 
-  ,autoTransWordToList:true  //禁止word中粘贴进来的列表自动变成列表标签
+  , autoTransWordToList: true  //禁止word中粘贴进来的列表自动变成列表标签
 
   //fontfamily
   //字体设置 label留空支持多语言自动切换，若配置，则以配置值为准
@@ -245,7 +245,7 @@ window.UEDITOR_CONFIG = {
   //]
 
   //打开右键菜单功能
-  ,enableContextMenu: false
+  , enableContextMenu: false
   //右键菜单的内容，可以参考plugins/contextmenu.js里边的默认菜单的例子，label留空支持国际化，否则以此配置为准
   //,contextMenu:[
   //    {
@@ -264,10 +264,10 @@ window.UEDITOR_CONFIG = {
 
   //elementPathEnabled
   //是否启用元素路径，默认是显示
-  ,elementPathEnabled : false
+  , elementPathEnabled: false
 
   //wordCount
-  ,wordCount:false          //是否开启字数统计
+  , wordCount: false          //是否开启字数统计
   //,maximumWords:10000       //允许的最大字符数
   //字数统计提示，{#count}代表当前字数，{#leave}代表还可以输入多少字符数,留空支持多语言自动切换，否则按此配置显示
   //,wordCountMsg:''   //当前已输入 {#count} 个字符，您还可以输入{#leave} 个字符
@@ -282,9 +282,9 @@ window.UEDITOR_CONFIG = {
   //removeFormat
   //清除格式时可以删除的标签和属性
   //removeForamtTags标签
-  ,removeFormatTags:'b,big,code,del,dfn,em,font,i,ins,kbd,q,samp,small,span,strike,strong,sub,sup,tt,u,var'
+  , removeFormatTags: 'b,big,code,del,dfn,em,font,i,ins,kbd,q,samp,small,span,strike,strong,sub,sup,tt,u,var'
   //removeFormatAttributes属性
-  ,removeFormatAttributes:'class,style,lang,width,height,align,hspace,valign'
+  , removeFormatAttributes: 'class,style,lang,width,height,align,hspace,valign'
 
   //undo
   //可以最多回退的次数,默认20
@@ -311,8 +311,8 @@ window.UEDITOR_CONFIG = {
   //,toolbarTopOffset:400
 
   //设置远程图片是否抓取到本地保存
-  ,catchRemoteImageEnable: true //设置是否抓取远程图片
-  ,catcherLocalDomainUse:false //禁用域名
+  , catchRemoteImageEnable: true //设置是否抓取远程图片
+  , catcherLocalDomainUse: false //禁用域名
   //pageBreakTag
   //分页标识符,默认是_ueditor_page_break_tag_
   //,pageBreakTag:'_ueditor_page_break_tag_'
@@ -342,7 +342,6 @@ window.UEDITOR_CONFIG = {
   //,tableDragable: true
 
 
-
   //sourceEditor
   //源码的查看方式,codemirror 是代码高亮，textarea是文本框,默认是codemirror
   //注意默认codemirror只能在ie8+和非ie中使用
@@ -369,17 +368,17 @@ window.UEDITOR_CONFIG = {
 
   //默认过滤规则相关配置项目
   //,disabledTableInTable:true  //禁止表格嵌套
-  ,allowDivTransToP:false      //允许进入编辑器的div标签自动变成p标签
+  , allowDivTransToP: false      //允许进入编辑器的div标签自动变成p标签
   //,rgb2Hex:true               //默认产出的数据中的color自动从rgb格式变成16进制格式
 
   // xss 过滤是否开启,inserthtml等操作
-  ,xssFilterRules: false
+  , xssFilterRules: false
   //input xss过滤
-  ,inputXssFilter: false
+  , inputXssFilter: false
   //output xss过滤
-  ,outputXssFilter: false
+  , outputXssFilter: false
   // xss过滤白名单 名单来源: https://raw.githubusercontent.com/leizongmin/js-xss/master/lib/default.js
-  ,whitList: whitList
+  , whitList: whitList
 };
 
 
