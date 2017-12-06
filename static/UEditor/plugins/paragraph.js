@@ -140,7 +140,7 @@ UE.plugins['paragraph'] = function() {
             range = doParagraph(range,style,attrs,sourceCmdName);
             if(txt){
                 range.setStartBefore(txt).collapse(true);
-                pN = txt.parentNode;
+                var pN = txt.parentNode;
 
                 domUtils.remove(txt);
 

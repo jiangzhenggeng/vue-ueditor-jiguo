@@ -709,12 +709,12 @@
     UE.ui.Editor = function (options) {
         var editor = new UE.Editor(options);
         editor.options.editor = editor;
-        utils.loadFile(document, {
-            href:editor.options.themePath + editor.options.theme + "/_css/ueditor.css",
-            tag:"link",
-            type:"text/css",
-            rel:"stylesheet"
-        });
+        // utils.loadFile(document, {
+        //     href:editor.options.themePath + editor.options.theme + "/_css/ueditor.css",
+        //     tag:"link",
+        //     type:"text/css",
+        //     rel:"stylesheet"
+        // });
 
         var oldRender = editor.render;
         editor.render = function (holder) {

@@ -14,7 +14,7 @@ module.exports = [
       template: getTplPath('article'),
     },
     subModel: {
-      UEditor: './src/components/UEditor/index.js'
+      UEditor: './static/UEditor/index.js'
     }
   }
 ]

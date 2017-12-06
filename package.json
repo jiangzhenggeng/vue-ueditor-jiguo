@@ -1,6 +1,6 @@
 {
-  "name": "jiguo-home-vue",
-  "version": "1.0.0",
+  "name": "new-admin-vue",
+  "version": "0.1.0",
   "description": "A Vue.js project",
   "author": "JianZG <2992265870@qq.com>",
   "private": true,
@@ -82,7 +82,7 @@
     "less-plugin-functions": "^1.0.0",
     "mocha": "^3.2.0",
     "nightwatch": "^0.9.12",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.7.2",
     "opn": "^5.1.0",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
     "ora": "^1.2.0",

@@ -1,5 +1,7 @@
 
 
+require('./editor.less');
+
 require('./ueditor.config');
 
 require('./editor');
@@ -91,7 +93,7 @@ require('./plugins/autoupload');
 require('./plugins/autosave');
 // require('./plugins/charts');
 require('./plugins/section');
-// require('./plugins/simpleupload');
+require('./plugins/simpleupload');
 require('./plugins/serverparam');
 require('./plugins/insertfile');
 // require('./plugins/xssFilter');
@@ -132,8 +134,8 @@ require('./adapter/autosave');
 require('./third-party/codemirror/codemirror');
 require('./third-party/zeroclipboard/ZeroClipboard');
 
-require('./vuecom/video');
-require('./vuecom/fullscreen');
+// require('./vuecom/video');
+// require('./vuecom/fullscreen');
 
 
 
