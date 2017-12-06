@@ -1,5 +1,15 @@
+<style lang="less">
+  @import "../components/animate";
+
+  .editor__wrap {
+    width: 850px;
+    margin: auto;
+  }
+</style>
+
 <template>
-  <div>
+  <div class="editor__wrap">
+    <div v-for="item in listArray">哈哈哈😄<br></div>
     <create-editor
       @editor-ready="editorReady"
       @trigger:click:event="TriggerClickEvent"
@@ -16,6 +26,7 @@
       :visibile.sync="InsertCardVisibile"
       @insert:html="InsertHtml"
     />
+    <div v-for="item in listArray">呼呼呼🐯<br></div>
   </div>
 </template>
 
@@ -27,18 +38,9 @@
   import InertCard from '../components/insert-card.vue'
 
   export default {
-    data: function () {
-      var fg = function () {
-
-      }
-      fg.prototype = {
-        construct: fg,
-        df: function () {
-
-        }
-      }
-      console.log(new fg())
+    data() {
       return {
+        listArray: Array(50).fill(3),
         InsertVideoVisibile: false,
         InsertImageVisibile: false,
         InsertCardVisibile: false,
@@ -74,7 +76,6 @@
       },
       InsertHtml(html) {
         this.editor.execCommand('inserthtml', html)
-        console.log(this.editor.getContent())
       },
       ...mapActions(['hidePageLoading'])
     }

@@ -79,11 +79,16 @@ UE.plugins['my_style'] = function () {
         execCommand: function () {
           var me = this, flage = 'flage-' + command
           me[flage] = !me[flage]
-          if (me.queryCommandState(command) == 1) {
+          if (command === 'full_screen') {
+            me.$emitEvent(command, me[flage])
+          }else if (me.queryCommandState(command) == 1) {
             me.$emitEvent(command, me[flage])
           }
         },
         queryCommandState: function () {
+          if (command === 'full_screen') {
+            return me.fullScreen ? 1 : 0
+          }
           return 1
         }
       }
