@@ -42,7 +42,7 @@ export function convertUrlToIframe(url) {
   if (!url) return false
 
   if (url.match('v.qq.com') || url.match('video.qq.com') || url.match('imgcache.qq.com')) {
-    url = 'http://v.qq.com/iframe/player.html?vid=' + getKeyVal(url, 'vid') + '&width=640&height=350&auto=0'
+    url = 'http://v.qq.com/iframe/player.html?vid=' + getKeyVal(url, 'vid') + '&width=630&height=350&auto=0'
   } else if (url.match('youku.com')) {
     url.match(/http:\/\/player.youku.com\/player.php\/sid\/(.+)\/v.swf/)
     url = 'http://player.youku.com/embed/' + RegExp.$1

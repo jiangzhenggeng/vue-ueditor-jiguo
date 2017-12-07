@@ -10,7 +10,8 @@
       v-if="inner_visibile"
       @mousedown="mousedown=true"
       @mouseup="mousedown=false"
-      @close="close" title="插入视频"
+      @close="close"
+      title="插入视频"
     >
       <div class="video__wrap">
         <div class="video__input-box">
@@ -58,7 +59,7 @@
           </div>
         </div>
         <div class="video__footer">
-          <div class="video__btn video__cansel" @click="cancel">取消</div>
+          <div class="video__btn video__cansel" @click="close">取消</div>
           <div id="video__btn-check-wrap" class="video__btn" :class="`video__${status}`" @click="InsertVideo(status)">
             <span class="video__btn-text">确认</span>
             <img src="./rotation_show.svg"/>
@@ -130,13 +131,10 @@
         if (status == 'ok' || status == 'check') {
           var html = this.$refs['video-wrap-box'].innerHTML
           this.$emit('insert:html', html)
-          this.cancel()
+          this.close()
         } else {
 
         }
-      },
-      cancel() {
-        this.$emit('update:visibile', false)
       }
     }
   }

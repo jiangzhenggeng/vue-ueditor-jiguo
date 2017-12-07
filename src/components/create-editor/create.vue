@@ -88,9 +88,6 @@
         if (eventType === 'full_screen') {
           this.fullScreen = vm.editor.fullScreen = !this.fullScreen
         }
-        if (eventType === 'remote_catch') {
-          //this.fullScreen = vm.editor.fullScreen = !this.fullScreen
-        }
       }
 
       //绑定滚动事件
