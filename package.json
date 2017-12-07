@@ -20,7 +20,8 @@
     "vue-jui": "^0.2.4",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.0",
-    "wc-messagebox": "^1.8.4"
+    "wc-messagebox": "^1.8.4",
+    "simple-uploader.js": "^0.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import createLogger from 'vuex/dist/logger'
 import * as actions from './actions'
 import mutations from './mutations'
+import editor from './editor/index'
 
 Vue.use(Vuex)
 
@@ -17,6 +18,9 @@ const store = new Vuex.Store({
   state: initState,
   actions,
   mutations,
+  modules: {
+    editor
+  },
   strict: debug,
   plugins: debug ? [createLogger()] : []
 })
@@ -26,12 +30,12 @@ store.registerModule('routerDir', {
     direction: 'forward'
   },
   mutations: {
-    updateDirection (state, payload) {
+    updateDirection(state, payload) {
       state.direction = payload.direction
     }
   },
   actions: {
-    updateDirection ({commit}, direction) {
+    updateDirection({commit}, direction) {
       commit({type: 'updateDirection', direction: direction})
       if (direction.direction == 'out') {
         setTimeout(() => {

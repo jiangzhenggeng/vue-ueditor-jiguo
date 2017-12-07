@@ -7,7 +7,7 @@
 <template>
   <transition name="window__modal">
     <dialog-base
-      v-if="inner_visibile"
+      v-show="inner_visibile"
       @mousedown="mousedown=true"
       @mouseup="mousedown=false"
       @close="close"
@@ -19,7 +19,7 @@
         </div>
         <div class="video__body">
           <div class="previewvideo__msg">
-            <div v-if="!inner_videoUrl"><img src="./video_cover.svg"/></div>
+            <div v-if="!inner_videoUrl"><img src="./icon/video_cover.svg"/></div>
             <span v-else-if="notSupport" class="previewvideo__msg-tps-text">不支持或地址错误</span>
             <div v-else :style="`position:relative;height:${height}px;width:${width}px;overflow:hidden`">
               <div class="previewvideo__msg">
@@ -62,7 +62,7 @@
           <div class="video__btn video__cansel" @click="close">取消</div>
           <div id="video__btn-check-wrap" class="video__btn" :class="`video__${status}`" @click="InsertVideo(status)">
             <span class="video__btn-text">确认</span>
-            <img src="./rotation_show.svg"/>
+            <img src="./icon/rotation_show.svg"/>
           </div>
         </div>
       </div>
