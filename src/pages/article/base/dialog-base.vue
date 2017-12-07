@@ -168,7 +168,7 @@
       <div class="model__td">
         <div class="model__inner">
           <div class="model__content">
-            <div class="model__header" @mousedown="mousedown">
+            <div class="model__header" @mousedown="mousedown($event)">
               <div class="model__title">{{ title }}</div>
               <div class="model__close" @click="close">×</div>
             </div>
@@ -199,10 +199,10 @@
       var _this = this
       _this.windowW = $(window).width()
       _this.windowH = $(window).height()
-      $(document).on('mouseup.dialogbase', function (e) {
-        _this.mouseup(e)
-      }).on('mousemove.dialogbase', function (e) {
+      $(document).on('mousemove.dialogbase', function (e) {
         _this.mousemove(e)
+      }).on('mouseup.dialogbase', function (e) {
+        _this.mouseup(e)
       })
 
       $(this.$refs['model__wrap']).css({
@@ -221,8 +221,8 @@
         this.$emit('mousedown')
         this.MousedownFlage = true
         var offset = $(this.$refs['model__wrap']).offset()
-        this.posX = e.clientX - parseInt(offset.left)
-        this.posY = e.clientY - parseInt(offset.top)
+        this.posX = e.clientX - parseInt(offset.left) + $(window).scrollLeft()
+        this.posY = e.clientY - parseInt(offset.top) + $(window).scrollTop()
       },
       mousemove(e) {
         if (this.MousedownFlage) {
