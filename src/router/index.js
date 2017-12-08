@@ -7,7 +7,7 @@ Vue.use(Router)
 
 const debug = process.env.NODE_ENV !== 'production'
 const router = new Router({
-  mode: debug ? '' : 'history',
+  //mode: debug ? '' : 'history',
   routes: [
     {
       path: '/admin/article/add(.*)',
