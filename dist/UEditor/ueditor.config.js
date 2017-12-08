@@ -25,7 +25,7 @@ const whitList = require('./config/whitlist');
  */
 var URL, UPLOAD_URL;
 if (process.env.NODE_ENV == 'production') {
-  URL = 'http://cdn.jiguo.com/static@2.0/pc/UEditor/';
+  URL = 'https://jiangzhenggeng.github.io/vue-ueditor-jiguo/UEditor/';
   UPLOAD_URL = '/protected/extensions/ueditor/';
 } else {
   URL = 'http://localhost:8080/UEditor/';
