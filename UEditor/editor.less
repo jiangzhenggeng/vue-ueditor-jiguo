@@ -1,0 +1,481 @@
+html.editor-full-screen {
+  &, body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+.edui-editor-toolbarbox-position {
+  height: 60px;
+  position: relative;
+  z-index: 10;
+
+  .edui-editor-toolbarbox {
+    position: relative;
+    background: #fff;
+
+    .edui-editor-toolbarbox-inner {
+      height: 100%;
+      position: relative;
+      z-index: 2;
+      margin: auto;
+    }
+
+    .edui-editor-toolbarboxouter,
+    .edui-editor-toolbarboxinner,
+    .edui-toolbar {
+      width: 100%;
+      height: 100%;
+    }
+
+    .edui-separator-wrap {
+      display: inline-block;
+      font-size: 0;
+      padding: 10px 0px;
+      position: relative;
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        width: 1px;
+        background: #F2F2F2;
+        height: 24px;
+        margin-top: -12px;
+      }
+      &:last-child:after {
+        display: none;
+      }
+    }
+  }
+
+  .edui-separator-wrap {
+    .edui-button {
+      display: inline-block;
+      font-size: 12px;
+      position: relative;
+    }
+    .edui-state-disabled {
+      cursor: default;
+    }
+    .edui-state-check {
+      cursor: pointer;
+    }
+    .edui-state-hover {
+      cursor: pointer;
+      background-color: #EFEFEF;
+    }
+    .edui-state-active .edui-icon {
+      opacity: 0.5;
+    }
+
+    .edui-icon {
+      height: 40px;
+      width: 40px;
+      background-clip: content-box;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 20px auto;
+    }
+  }
+
+  .edui-for-source {
+    .edui-icon {
+      background-size: 23px auto;
+    }
+    .edui-icon,
+    .edui-state-checked .edui-icon {
+      background-image: url(./new-icon/source_show.svg);
+    }
+    .edui-state-disabled .edui-icon {
+      background-image: url(./new-icon/source_hide.svg);
+    }
+  }
+
+  .edui-for-undo {
+    .edui-icon {
+      background-size: 23px auto;
+    }
+    .edui-icon,
+    .edui-state-checked .edui-icon {
+      background-image: url(./new-icon/undo_show.svg);
+    }
+    .edui-state-disabled .edui-icon {
+      background-image: url(./new-icon/undo_hide.svg);
+    }
+  }
+
+  .edui-for-redo {
+    .edui-icon {
+      background-size: 23px auto;
+    }
+    .edui-icon,
+    .edui-state-checked .edui-icon {
+      background-image: url(./new-icon/redo_show.svg);
+    }
+    .edui-state-disabled .edui-icon {
+      background-image: url(./new-icon/redo_hide.svg);
+    }
+  }
+
+  .edui-editor-messageholder {
+    position: absolute;
+    right: 0;
+    display: block !important;
+  }
+
+  .edui-for-bold {
+    .edui-icon {
+      background-size: 14px auto;
+    }
+    .edui-icon {
+      background-image: url(./new-icon/bold_show.svg);
+    }
+    .edui-state-checked .edui-icon {
+      background-image: url(./new-icon/bold_check.svg);
+    }
+    .edui-state-disabled .edui-icon {
+      background-image: url(./new-icon/bold_hide.svg);
+    }
+  }
+
+  .edui-for-title_h3 {
+    .edui-icon {
+      background-size: 15px auto;
+    }
+    .edui-icon {
+      background-image: url(./new-icon/title_show.svg);
+    }
+    .edui-state-checked .edui-icon {
+      background-image: url(./new-icon/title_check.svg);
+    }
+    .edui-state-disabled .edui-icon {
+      background-image: url(./new-icon/title_hide.svg);
+    }
+  }
+
+  .edui-for-horizontal {
+    .edui-icon {
+      background-size: 20px auto;
+    }
+    .edui-icon,
+    .edui-state-checked .edui-icon {
+      background-image: url(./new-icon/horizontal_show.svg);
+    }
+    .edui-state-disabled .edui-icon {
+      background-image: url(./new-icon/horizontal_hide.svg);
+    }
+  }
+
+  .edui-for-insertorderedlist2 {
+    .edui-icon {
+      background-size: 18px auto;
+    }
+    .edui-icon {
+      background-image: url(./new-icon/insertorderedlist_show.svg);
+    }
+    .edui-state-checked .edui-icon {
+      background-image: url(./new-icon/insertorderedlist_check.svg);
+    }
+    .edui-state-disabled .edui-icon {
+      background-image: url(./new-icon/insertorderedlist_hide.svg);
+    }
+  }
+
+  .edui-for-insertunorderedlist2 {
+    .edui-icon {
+      background-size: 18px auto;
+    }
+    .edui-icon {
+      background-image: url(./new-icon/insertunorderedlist_show.svg);
+    }
+    .edui-state-checked .edui-icon {
+      background-image: url(./new-icon/insertunorderedlist_check.svg);
+    }
+    .edui-state-disabled .edui-icon {
+      background-image: url(./new-icon/insertunorderedlist_hide.svg);
+    }
+  }
+
+  .edui-for-justifyleft {
+    .edui-icon {
+      background-size: 18px auto;
+    }
+    .edui-icon {
+      background-image: url(./new-icon/justifyleft_show.svg);
+    }
+    .edui-state-checked .edui-icon {
+      background-image: url(./new-icon/justifyleft_check.svg);
+    }
+    .edui-state-disabled .edui-icon {
+      background-image: url(./new-icon/justifyleft_hide.svg);
+    }
+  }
+
+  .edui-for-justifycenter {
+    .edui-icon {
+      background-size: 18px auto;
+    }
+    .edui-icon {
+      background-image: url(./new-icon/justifycenter_show.svg);
+    }
+    .edui-state-checked .edui-icon {
+      background-image: url(./new-icon/justifycenter_check.svg);
+    }
+    .edui-state-disabled .edui-icon {
+      background-image: url(./new-icon/justifycenter_hide.svg);
+    }
+  }
+
+  .edui-for-justifyright {
+    .edui-icon {
+      background-size: 18px auto;
+    }
+    .edui-icon {
+      background-image: url(./new-icon/justifyright_show.svg);
+    }
+    .edui-state-checked .edui-icon {
+      background-image: url(./new-icon/justifyright_check.svg);
+    }
+    .edui-state-disabled .edui-icon {
+      background-image: url(./new-icon/justifyright_hide.svg);
+    }
+  }
+
+  .edui-for-insert_video {
+    .edui-icon {
+      background-size: 20px auto;
+    }
+    .edui-icon,
+    .edui-state-checked .edui-icon {
+      background-image: url(./new-icon/insert_video_show.svg);
+    }
+    .edui-state-disabled .edui-icon {
+      background-image: url(./new-icon/insert_video_hide.svg);
+    }
+  }
+
+  .edui-for-full_screen {
+    .edui-icon {
+      background-size: 18px auto;
+    }
+    .edui-icon {
+      background-image: url(./new-icon/fullscreen_show.svg);
+    }
+    .edui-state-checked .edui-icon {
+      background-image: url(./new-icon/fullscreen_hide.svg);
+    }
+    .edui-state-disabled .edui-icon {
+      background-image: url(./new-icon/fullscreen_show.svg);
+    }
+  }
+
+  .edui-for-drafts {
+    .edui-icon {
+      background-size: 13px auto;
+    }
+    .edui-icon,
+    .edui-state-checked .edui-icon {
+      background-image: url(./new-icon/rec_show.svg);
+    }
+    .edui-state-disabled .edui-icon {
+      background-image: url(./new-icon/rec_hide.svg);
+    }
+  }
+
+  .edui-for-simpleupload {
+    .edui-icon {
+      background-size: 16px auto;
+    }
+    .edui-icon,
+    .edui-state-checked .edui-icon {
+      background-image: url(./new-icon/simpleupload_show.svg);
+    }
+    .edui-state-disabled .edui-icon {
+      background-image: url(./new-icon/simpleupload_hide.svg);
+    }
+  }
+
+  .edui-for-insert_image {
+    .edui-icon {
+      background-size: 16px auto;
+    }
+    .edui-icon,
+    .edui-state-checked .edui-icon {
+      background-image: url(./new-icon/insertimage_show.svg);
+    }
+    .edui-state-disabled .edui-icon {
+      background-image: url(./new-icon/insertimage_hide.svg);
+    }
+  }
+
+  .edui-for-insert_card {
+    .edui-icon {
+      background-size: 18px auto;
+    }
+    .edui-icon,
+    .edui-state-checked .edui-icon {
+      background-image: url(./new-icon/insert_card_show.svg);
+    }
+    .edui-state-disabled .edui-icon {
+      background-image: url(./new-icon/insert_card_hide.svg);
+    }
+  }
+
+  .edui-for-remote_catch {
+    .edui-icon {
+      background-size: 20px auto;
+    }
+    .edui-icon,
+    .edui-state-checked .edui-icon {
+      background-image: url(./new-icon/remote_catch_show.svg);
+    }
+    .edui-state-disabled .edui-icon {
+      background-image: url(./new-icon/remote_catch_hide.svg);
+    }
+  }
+
+  .edui-message {
+    min-height: 10px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    padding: 0;
+    margin-bottom: 3px;
+    position: relative;
+
+    .edui-editor-messageholder {
+      display: block;
+      width: 150px;
+      height: auto;
+      border: 0;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: 28px;
+      right: 3px;
+    }
+    .edui-message-body {
+      border-radius: 3px;
+      padding: 8px 15px 8px 8px;
+      color: #c09853;
+      background-color: #fcf8e3;
+      border: 1px solid #fbeed5;
+      box-sizing: border-box;
+      padding-right: 33px;
+    }
+    .edui-message-type-info {
+      color: #3a87ad;
+      background-color: #d9edf7;
+      border-color: #bce8f1;
+    }
+    .edui-message-type-success {
+      color: #468847;
+      background-color: #dff0d8;
+      border-color: #d6e9c6
+    }
+    .edui-message-type-danger,
+    .edui-message-type-error {
+      color: #b94a48;
+      background-color: #f2dede;
+      border-color: #eed3d7
+    }
+    .edui-message-closer {
+      display: block;
+      width: 33px;
+      height: 33px;
+      line-height: 28px;
+      text-align: center;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0;
+      cursor: pointer;
+      background: transparent;
+      border: 0;
+      float: right;
+      font-size: 20px;
+      font-weight: bold;
+      color: #999;
+      text-shadow: 0 1px 0 #fff;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    .edui-message-content {
+      font-size: 10pt;
+      word-wrap: break-word;
+      word-break: normal;
+    }
+  }
+
+}
+
+.editor__tools-tips-wrap {
+  background: #5B5B5B;
+  color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.20);
+  border-radius: 2px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  padding: 0 20px;
+  font-size: 14px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+  z-index: 10;
+  font-family: -apple-system, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-rendering: optimizeLegibility;
+  .editor__tools-tips-roow2 {
+    display: none;
+  }
+  .editor__tools-tips-roow {
+    position: absolute;
+    left: 50%;
+    margin-left: -9px;
+    bottom: -9px;
+  }
+  &.editor__tools-arrow-down {
+    .editor__tools-tips-roow {
+      display: none;
+    }
+    .editor__tools-tips-roow2 {
+      display: block;
+      top: -8px;
+    }
+  }
+}
+
+.edui-editor-iframeholder {
+  position: relative;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
