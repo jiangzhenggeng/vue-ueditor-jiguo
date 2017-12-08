@@ -13,6 +13,7 @@
     <create-editor
       @editor-ready="editorReady"
       @trigger:click:event="TriggerClickEvent"
+      :content="content"
     />
     <inert-video
       :visibile.sync="InsertVideoVisibile"
@@ -37,6 +38,8 @@
   import InertImage from '../components/insert-image.vue'
   import InertCard from '../components/insert-card.vue'
 
+  const content = require('raw-loader!./content.xhtml')
+
   export default {
     data() {
       return {
@@ -44,6 +47,7 @@
         InsertVideoVisibile: false,
         InsertImageVisibile: false,
         InsertCardVisibile: false,
+        content: content
       }
     },
     components: {
