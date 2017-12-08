@@ -3,6 +3,7 @@
 
 
 # 查看
+[预览地址](https://jiangzhenggeng.github.io/vue-ueditor-jiguo/index.html)
 
 ``` bash
 # 安转依赖
