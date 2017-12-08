@@ -46,6 +46,7 @@
         :mode="mode"
         v-model="selectedList"
         ref="insert-image-body"
+        :visible="inner_visibile"
       />
       <div class="dialog__bottom-wrap" slot="bottom">
         <div class="dialog__insert-type" @click="mode=mode==1?2:1">

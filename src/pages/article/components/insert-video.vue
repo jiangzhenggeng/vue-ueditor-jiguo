@@ -82,7 +82,7 @@
     props: {
       videoUrl: {
         type: String,
-        default: 'https://v.qq.com/x/cover/61fm5aaqrv18skf/h0025gp4zf2.html'
+        default: ''//https://v.qq.com/x/cover/61fm5aaqrv18skf/h0025gp4zf2.html'
       }
     },
     data() {

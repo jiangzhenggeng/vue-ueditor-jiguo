@@ -75,7 +75,7 @@
         align-items: center;
         cursor: pointer;
         user-select: none;
-        z-index: 2;
+        z-index: 5;
         &:active {
           opacity: 0.6;
         }
@@ -87,6 +87,7 @@
       .item-rotation {
         @extend .item-close;
         right: 22px;
+        z-index: 2;
       }
       /*插入*/
       .item-insert {
@@ -131,7 +132,7 @@
         width: 100%;
         left: 0;
         bottom: 0;
-        z-index: 2;
+        z-index: 5;
         .uploader-progress-bar {
           background: #fc584e;
           width: 0%;
@@ -145,6 +146,25 @@
       .uploader-list-inner:hover .hover-show {
         display: flex;
       }
+
+      /*状态*/
+      .uploading-status {
+        position: absolute;
+        z-index: 3;
+        background: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      /*图片加载状态*/
+      .image-loading-status {
+        display: none;
+      }
     }
   }
 </style>
@@ -152,16 +172,16 @@
   <uploader :options="options" class="jui-uploader" ref="uploader">
     <uploader-unsupport></uploader-unsupport>
     <uploader-list>
-      <ul slot-scope="props" class="uploader-list-ul">
+      <ul slot-scope="props" class="uploader-list-ul" ref="uploader-list-ul">
         <li>
-          <uploader-btn class="uploader-list-inner" :attrs="attrs">
+          <uploader-btn class="uploader-list-inner" :attrs="attrs" ref="uploader-btn">
             <div class="jui-uploader__btn-inner">
               <img src="./icon/uploader.svg"/>
               <div>最大8Mb</div>
             </div>
           </uploader-btn>
         </li>
-        <li v-for="file in props.fileList" :key="file.id">
+        <li v-for="file in props.fileList" :key="file.id" :id="`li-id-${file.id}`">
           <uploader-file :file="file" :list="true" class="uploader-list-inner">
             <template slot-scope="props">
               <!--关闭-->
@@ -182,20 +202,21 @@
 
               <!--等待上传-->
               <template v-if="props.status=='waiting'">
-
+                <div class="uploading-status">等待上传...</div>
               </template>
               <!--上传中-->
-              <template v-if="props.status=='uploading'">
+              <template v-else-if="props.status=='uploading'">
+                <div class="uploading-status">上传中</div>
                 <div class="uploader-progress-wrap">
                   <div class="uploader-progress-bar" :style="`width:${props.progress*100}%`"></div>
                 </div>
               </template>
               <!--上传停止-->
               <template v-else-if="props.status=='paused'">
-
+                <div class="uploading-status">上传停止</div>
               </template>
               <!--上传成功-->
-              <template v-if="props.status=='success'">
+              <template v-else-if="props.status=='success'">
                 <!--旋转-->
                 <div
                   @click="itemRotation('success-img-' + props.file.id,props.file)"
@@ -207,6 +228,7 @@
                   <img
                     :ref="`success-img-${props.file.id}`"
                     :src="`http://s1.jiguo.com/${props.respon.field}/logo`"
+                    @load="successFirstLoadImage(`success-img-${props.file.id}`,props.file)"
                   />
                 </div>
                 <div @click="insertItem('success-img-' + props.file.id,props.file)" class="item-insert hover-show">
@@ -222,12 +244,13 @@
               </template>
               <!--上传错误-->
               <template v-else-if="props.status=='error'">
-
+                <div class="uploading-status">上传错误</div>
               </template>
               <!--其他未知状态-->
               <template v-else>
-                <div>{{ props.status }}}</div>
+                <div class="uploading-status">{{ props.status }}</div>
               </template>
+              <div class="uploading-status image-loading-status">加载中...</div>
             </template>
           </uploader-file>
         </li>
@@ -248,6 +271,10 @@
       value: {
         type: Array,
         default: []
+      },
+      visible: {
+        type: Boolean,
+        default: false
       }
     },
     data() {
@@ -262,7 +289,8 @@
             action: 'uploadimage'
           },
           fileParameterName: 'upfile',
-          chunkSize: 8 * 1024 * 1024
+          chunkSize: 8 * 1024 * 1024,
+          progressCallbacksInterval: 300
         },
         attrs: {
           accept: 'image/jpg,image/jpeg,image/png,image/gif'
@@ -272,39 +300,50 @@
     },
     watch: {
       selectedList(newVal) {
-        this.$emit('update:value', newVal)
+        this.$emit('input', newVal)
+      },
+      visible() {
+        if ($(this.$refs['uploader-list-ul']).find('li').length <= 1) {
+          setTimeout(()=>{
+            $(this.$refs['uploader-btn'].$el).trigger('click')
+          },240)
+        }
       }
     },
     methods: {
       getInsertHtml() {
         var html = ''
         if (!this.selectedList.length) {
+          var array = []
           for (var i in this.$refs) {
-            if (i.substr(0, 12) !== 'success-img-') {
-              continue
+            if (i.substr(0, 12) == 'success-img-') {
+              array.push(i)
             }
-            var item = this.$refs[i]
+          }
+          array.sort(function (a, b) {
+            return parseInt(a.substr(12)) <= parseInt(b.substr(12)) ? -1 : 1
+          })
+
+          for (var i = 0; i < array.length; i++) {
+            var item = this.$refs[array[i]]
             if (item.length) {
               if (this.mode == 1) {
                 html += '<p style="text-align:center">' + $(item[0]).prop('outerHTML') + '</p>'
               } else {
                 html += $(item[0]).prop('outerHTML')
               }
+
+              this.$refs['uploader'].fileList.forEach((file) => {
+                if (array[i].substr(12) == file.id) {
+                  this.$refs['uploader'].uploader.removeFile(file)
+                }
+              })
             }
           }
-          if (this.mode != 1) {
+          if (this.mode != 1 && html) {
             html = '<p style="text-align:center">' + html + '</p>'
           }
-          // this.$nextTick(()=>{
-          //   var fileArray = []
-          //   this.$refs['uploader'].fileList.forEach((file) => {
-          //     fileArray.push(file)
-          //   })
-          //   fileArray.forEach((file)=>{
-          //     this.$refs['uploader'].uploader.removeFile(file)
-          //   })
-          // })
-          // this.$refs['uploader'].fileList = []
+          this.selectedList = []
           return html
         }
 
@@ -319,7 +358,7 @@
           }
           this.$refs['uploader'].uploader.removeFile(item.file)
         })
-        if (this.mode != 1) {
+        if (this.mode != 1 && html) {
           html = '<p style="text-align:center">' + html + '</p>'
         }
         this.selectedList = []
@@ -343,7 +382,33 @@
         file.rotate = ((file.rotate || 0) + 90) % 360;
         var logo = '|watermark/1/image/aHR0cDovL3dhdGVybWFyay0xMjUyMTA2MjExLnBpY3NoLm15cWNsb3VkLmNvbS8xNDk3OTQyODk2MjgzNTk0OGNiNzA1NGViZi5wbmc=/gravity/southeast/dx/20/dy/20';
         var src = 'http://s1.jiguo.com/' + file.respon.field + '?imageView2/2/w/640/q/100|imageMogr2/rotate/' + file.rotate + logo;
-        this.$refs[id][0].src = src
+        this.loadingImageMask(src, this.$refs[id][0], file.respon.type)
+      },
+      loadingImageMask(src, img, type) {
+        var tempImg = new Image()
+        var mask = $(img).closest('li').find('.image-loading-status')
+        mask.css('display', 'flex')
+        tempImg.onload = function () {
+          $(img).attr({
+            'src': this.src,
+            '_src': this.src,
+            'data-width': this.width,
+            'data-height': this.height,
+            'data-img-type': type || 2,
+            'data-ratio': this.width / this.height,
+          })
+          mask.css('display', 'none')
+        }
+        tempImg.src = src
+      },
+      successFirstLoadImage(id, file) {
+        var currentImg = $(this.$refs[id][0])
+        if (currentImg.data('first-loading')) {
+          return
+        }
+        var src = 'http://s1.jiguo.com/' + file.respon.field + '/logo';
+        this.loadingImageMask(src, currentImg, file.respon.type)
+        currentImg.data('first-loading', true)
       },
       //选中/取消图片
       selectedItem(id, file) {
