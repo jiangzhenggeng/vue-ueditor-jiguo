@@ -45,7 +45,7 @@ if (arguments.length) {
   })
 } else {
   completeModule = config.page.filter((item) => {
-    if (item[i].notpackage) {
+    if (item.notpackage) {
       return false
     }
     return true
